@@ -2,7 +2,7 @@ document.querySelector("#buttonSubmit").addEventListener("click", clickedButton)
 document.querySelector("#buttonSubmit2").addEventListener("click", clickedButton2);
 document.querySelector("#submitButton").addEventListener("click", clickStartButton);
 document.querySelector("#submitButton2").addEventListener("click", clickStartButton2);
-let time = 60;
+let time = 500;
 let currentPlayer = 1;
 let i = time;
 let randomLetter;
