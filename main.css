@@ -17,7 +17,7 @@ body{
 }
 
 #container-body{
-    height: 100%;
+    height: 95%;
  
     display: grid;
     align-content: center;
@@ -71,6 +71,7 @@ color: #575c5c;
 }
 #container-inner2{
 display: none;
+margin-top: 3rem;
 }
 
 #test1, #test2{
@@ -90,8 +91,8 @@ display: none;
    
 }
 
-#ratingArea{
-    display: grid;
+#ratingArea, #ratingArea2{
+    display: none;
     grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr ;
     background-color: rgb(250, 250, 250);
     align-items: center;
@@ -238,3 +239,18 @@ width: 100%;
     width: 100%;
 }
 
+.fas{
+    font-size: 1.2rem;
+}
+
+.fa-check{
+    color: #5ad841;
+}
+
+.equalButton{
+    color:rgb(95, 95, 95) !important;
+}
+
+.wrongButton {
+    color: rgb(207, 8, 8);
+}

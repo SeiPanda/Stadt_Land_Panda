@@ -2,6 +2,18 @@ document.querySelector("#buttonSubmit").addEventListener("click", clickedButton)
 document.querySelector("#buttonSubmit2").addEventListener("click", clickedButton2);
 document.querySelector("#submitButton").addEventListener("click", clickStartButton);
 document.querySelector("#submitButton2").addEventListener("click", clickStartButton2);
+
+document.querySelectorAll(".wrongButton").forEach(button => {
+    button.addEventListener("click", clickWrongButton);
+})
+document.querySelectorAll(".rightButton").forEach(button => {
+    button.addEventListener("click", clickRightButton);
+})
+document.querySelectorAll(".equalButton").forEach(button => {
+    button.addEventListener("click", clickEqualButton);
+})
+
+
 let time = 500;
 let currentPlayer = 1;
 let i = time;
@@ -51,6 +63,8 @@ function sekunden() {
         document.getElementById("roundSection").innerHTML = "Results";
         document.querySelector("#container-inner").style.display = "grid";
         document.querySelector("#container-inner2").style.display = "grid";
+        document.querySelector("#ratingArea").style.display = "grid";
+            document.querySelector("#ratingArea2").style.display = "grid";
         document.querySelectorAll(".buttons").forEach(button => {
             button.style.display = "none";
         })
@@ -81,6 +95,8 @@ function sekunden() {
             document.getElementById("roundSection").innerHTML = "Results";
             document.querySelector("#container-inner").style.display = "grid";
             document.querySelector("#container-inner2").style.display = "grid";
+            document.querySelector("#ratingArea").style.display = "grid";
+            document.querySelector("#ratingArea2").style.display = "grid";
             document.querySelectorAll(".buttons").forEach(button => {
                 button.style.display = "none";
             })
@@ -147,3 +163,22 @@ function SaveData2(){
 // if(lsScores) {
 //     highscores = JSON.parse(lsScores);
 // 
+
+
+
+
+function clickRightButton(event){
+    console.log("Clicked Right Button");
+    let currentClickedButton = event.target.parentNode.parentNode.parentNode.parentNode;
+}
+
+function clickWrongButton(event){
+    console.log("Clicked Wrong Button");
+    let currentClickedButton = event.target.parentNode.parentNode.parentNode.parentNode;
+    
+}
+function clickEqualButton(event){
+    console.log("Clicked Equal Button");
+    let currentClickedButton = event.target.parentNode.parentNode.parentNode.parentNode;
+}
+
