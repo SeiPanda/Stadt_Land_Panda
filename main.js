@@ -1,4 +1,4 @@
-let time = 5;
+let time = 60;
 let currentPlayer = 1;
 let i = time;
 let randomLetter;
@@ -21,6 +21,7 @@ document.querySelectorAll(".equalButton").forEach(button => {
 })
 
 function clickStartButton(){
+    document.querySelector("#submitButton").removeEventListener("click", clickStartButton)
     randomLetter = getRandomLetter();
     document.querySelector("#submitButton").innerHTML = randomLetter;
     setTimeout( () => {
@@ -164,17 +165,76 @@ function SaveData2(){
 // 
 
 function clickRightButton(event){
-    console.log("Clicked Right Button");
-    let currentClickedButton = event.target.parentNode.parentNode.parentNode.parentNode;
+
+    let currentClickedButton = event.target.parentNode.parentNode.parentNode.id;
+
+    let ratingColumnElement = document.getElementById(currentClickedButton);
+
+    setAreaActiveAndRemoveClass(ratingColumnElement);
+
+    ratingColumnElement.children[1].classList.add("notCurrent");
+    ratingColumnElement.children[2].classList.add("notCurrent");
 }
 
 function clickWrongButton(event){
-    console.log("Clicked Wrong Button");
-    let currentClickedButton = event.target.parentNode.parentNode.parentNode.parentNode;
+    let currentClickedButton = event.target.parentNode.parentNode.parentNode.id;
+
+    let ratingColumnElement = document.getElementById(currentClickedButton);
+
+    setAreaActiveAndRemoveClass(ratingColumnElement);
+
+    ratingColumnElement.children[0].classList.add("notCurrent");
+    ratingColumnElement.children[1].classList.add("notCurrent");
+    
     
 }
 function clickEqualButton(event){
-    console.log("Clicked Equal Button");
-    let currentClickedButton = event.target.parentNode.parentNode.parentNode.parentNode;
+    let currentClickedButton = event.target.parentNode.parentNode.parentNode.id;
+
+    let ratingColumnElement = document.getElementById(currentClickedButton);
+
+    setAreaActiveAndRemoveClass(ratingColumnElement);
+
+    ratingColumnElement.children[0].classList.add("notCurrent");
+    ratingColumnElement.children[2].classList.add("notCurrent");
 }
 
+
+function setAreaActiveAndRemoveClass(element){
+
+    element.classList.add("active");
+    let childrenLength = element.children.length;
+
+    for(let i = 0; i < childrenLength; i++){
+        element.children[i].classList.remove("notCurrent");
+    }
+
+}
+
+//button erstellen, eventListener darein prove All aufrufen bei false return button nicht ausführbar, bei true load date calc points, print winner
+
+function proveAllActive(){
+    let prove = false;
+    let proveAll = [false, false];
+
+
+    document.querySelectorAll(".ratingAreas").forEach((area, index) => {
+        for(let j = 0; j < area.children.length; j++){
+            prove = area.children[j].classList.contains("active");
+            if(!prove){
+                return;
+            }  
+        }
+
+        proveAll[index] = prove;
+
+    })
+
+
+
+    if(proveAll[0] && proveAll [1]){
+        console.log("Daten werden gespeichert")
+    }else{
+        console.log("Nicht alle Bewertungen abgegeben")
+    }
+}
