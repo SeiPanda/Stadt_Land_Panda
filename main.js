@@ -96,6 +96,7 @@ function sekunden() {
         }
        
         if(currentPlayer == 2){
+            
             document.getElementById("roundSection").innerHTML = "Results";
             document.querySelector("#container-inner").style.display = "grid";
             document.querySelector("#container-inner2").style.display = "grid";
@@ -150,7 +151,6 @@ function SaveData1(){
         player1.push(category.value);
     })
 
-    window.sessionStorage.setItem("player1Answers", JSON.stringify(player1));
 }
 
 function SaveData2(){
@@ -160,8 +160,6 @@ function SaveData2(){
         console.log(category.value);
         player2.push(category.value);
     })
-
-    window.sessionStorage.setItem("player2Answers", JSON.stringify(player2));
 }
  
 
@@ -221,39 +219,53 @@ function handleClickConfirmButton(){
         return;
     }
 
-    fillPlayerRatingArrays();
+    let filledPlayerRating = fillPlayerRatingArrays();
+    calcPlayersPoints(filledPlayerRating);
 
 }
 
 function proveAllActive(){
     let prove = false;
-    let proveAll = [false, false];
+    let proveAll = [];
 
 
     document.querySelectorAll(".ratingAreas").forEach((area, index) => {
+        proveAll.push(false);
         for(let j = 0; j < area.children.length; j++){
             prove = area.children[j].classList.contains("active");
             if(!prove){
                 return;
             }  
         }
-
         proveAll[index] = prove;
-
     })
 
-    if(proveAll[0] && proveAll [1]){
-        return true;
-    }else{
-        return false;
-    }
+    return !proveAll.includes(false)
 }
 
 function fillPlayerRatingArrays(){
-    let playerRatings = [,];
-  
+    let playerRatings = [];
+    let resultOptions = 3;
 
-    document.querySelectorAll(".ratingAreas").forEach((area) => {
-        
+    document.querySelectorAll(".ratingAreas").forEach((area, index) => {
+        playerRatings.push([]);
+        for(let j = 0; j < area.children.length; j++){
+            for(let i = 0; i < resultOptions; i++){
+                let prove = area.children[j].children[i].classList.contains("notCurrent");
+                if(!prove){
+                    playerRatings[index].push(area.children[j].children[i].className);
+                }
+            }
+        }
     })
+    return playerRatings;
+}
+
+function calcPlayersPoints(playerRatings){
+    for(let i = 0; i < playerRatings.length; i++) {
+        for(let j = 0; j < playerRating[i].length; j++){
+            
+        }
+    }
+    
 }
