@@ -8,6 +8,10 @@ document.querySelector("#buttonSubmit2").addEventListener("click", clickedButton
 document.querySelector("#submitButton").addEventListener("click", clickStartButton);
 document.querySelector("#submitButton2").addEventListener("click", clickStartButton2);
 
+document.querySelector("#confirmButton").addEventListener("click", handleClickConfirmButton);
+
+
+
 document.querySelectorAll(".wrongButton").forEach(button => {
     button.addEventListener("click", clickWrongButton);
 })
@@ -63,7 +67,7 @@ function sekunden() {
         document.querySelector("#container-inner2").style.display = "grid";
         document.querySelector("#ratingArea").style.display = "grid";
         document.querySelector("#ratingArea2").style.display = "grid";
-
+        document.querySelector("#confirmButton").style.display ="flex";
         document.querySelectorAll(".buttons").forEach(button => {
             button.style.display = "none";
         })
@@ -85,6 +89,7 @@ function sekunden() {
             document.querySelector("#container-inner").style.display = "none";
             document.querySelector("#container-inner2").style.display = "grid";
             document.querySelector("#PopUpName2").style.display = "flex";
+            document.querySelector("#confirmButton").style.display ="flex";
             i = 200;
             currentPlayer = 2;
             return;
@@ -96,7 +101,7 @@ function sekunden() {
             document.querySelector("#container-inner2").style.display = "grid";
             document.querySelector("#ratingArea").style.display = "grid";
             document.querySelector("#ratingArea2").style.display = "grid";
-
+            document.querySelector("#confirmButton").style.display ="flex";
             document.querySelectorAll(".buttons").forEach(button => {
                 button.style.display = "none";
             })
@@ -113,6 +118,7 @@ function clickedButton(){
     document.querySelector("#container-inner").style.display = "none";
     document.querySelector("#container-inner2").style.display = "grid";
     document.querySelector("#PopUpName2").style.display = "flex";
+    
     i = 200;
     currentPlayer = 2;
     sekunden();
@@ -144,7 +150,7 @@ function SaveData1(){
         player1.push(category.value);
     })
 
-    window.sessionStorage.setItem("player1Scores", JSON.stringify(player1));
+    window.sessionStorage.setItem("player1Answers", JSON.stringify(player1));
 }
 
 function SaveData2(){
@@ -155,14 +161,9 @@ function SaveData2(){
         player2.push(category.value);
     })
 
-    window.sessionStorage.setItem("player2Scores", JSON.stringify(player2));
+    window.sessionStorage.setItem("player2Answers", JSON.stringify(player2));
 }
-
-// let lsScores = localStorage.getItem("playerScores");
-
-// if(lsScores) {
-//     highscores = JSON.parse(lsScores);
-// 
+ 
 
 function clickRightButton(event){
 
@@ -213,6 +214,17 @@ function setAreaActiveAndRemoveClass(element){
 
 //button erstellen, eventListener darein prove All aufrufen bei false return button nicht ausführbar, bei true load date calc points, print winner
 
+
+function handleClickConfirmButton(){
+    let all = proveAllActive();
+    if(!all){
+        return;
+    }
+
+    fillPlayerRatingArrays();
+
+}
+
 function proveAllActive(){
     let prove = false;
     let proveAll = [false, false];
@@ -230,11 +242,18 @@ function proveAllActive(){
 
     })
 
-
-
     if(proveAll[0] && proveAll [1]){
-        console.log("Daten werden gespeichert")
+        return true;
     }else{
-        console.log("Nicht alle Bewertungen abgegeben")
+        return false;
     }
+}
+
+function fillPlayerRatingArrays(){
+    let playerRatings = [,];
+  
+
+    document.querySelectorAll(".ratingAreas").forEach((area) => {
+        
+    })
 }
