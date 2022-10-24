@@ -1,0 +1,109 @@
+@font-face {
+    font-family: typo;
+    src: url(TypoSlab_Irregular_Demo.otf);
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    background-color: #2d898e;
+}
+
+#heading {
+    font-family: typo;
+    color: white;
+    justify-self: center;
+}
+
+#container-body{
+    height: 95%;
+    display: grid;
+    align-content: center;
+    grid-template-rows: 0.9fr 1fr 1fr;
+    align-items: center;
+}
+
+#container-inner {
+    display: flex;
+
+    width: 100%;
+  
+    justify-content: center;
+    align-items: center;
+}
+
+#letterSection{
+  justify-self: right;
+}
+
+#headerArea{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    width: 95vw;
+    font-size: 2rem;
+    font-family: typo;
+    color: #ffffffaf;
+    justify-self: center;
+}
+
+#gameSettingsContainer {
+   height: 100%;
+   width: fit-content;
+}
+
+#outer-container{
+    height: 100%;
+   
+    display: grid;
+   
+    grid-template-rows: 1fr 0.2fr;
+    row-gap: 2rem;
+    background-color: white;
+  
+    padding: 2rem;
+   
+    
+}
+
+#inner-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    background-color: #2d898ecb;
+    align-items: center;
+    color: white;
+    padding: 2rem;
+    font-family: animeital;
+    font-size: 2rem;
+    box-shadow: 0px 0px 10px 1px #d7d7d7;
+}
+
+#inputLabel{
+  color: white;
+  padding-right: 1rem;
+    
+}
+
+#inputName{
+    border: 1px solid #2d898ecb;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: animeital;
+    background-color: white;
+    outline: none;
+    box-shadow: inset 0px 0px 4px 0px #5c5c5c;
+}
+
+#categoryCreateSection {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+#playerCreateSection {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-items: center;
+}
