@@ -2,6 +2,10 @@ let time = 60;
 let currentPlayer = 1;
 let i = time;
 let randomLetter;
+let players = []
+    players = JSON.parse(localStorage.getItem("choosenPlayers"));
+
+generateLayout();
 
 let submitButton1 = document.querySelector("#submitButton1");
 let submitButton2 = document.querySelector("#submitButton2");
@@ -14,26 +18,56 @@ let ratingArea2 = document.querySelector("#ratingArea2");
 let roundSection = document.querySelector("#roundSection");
 let letterSection = document.querySelector("#letterSection");
 
-let count = 1;
-let zahl = 7;
 
-document.querySelectorAll(".ratingAreas").forEach(rating => {
+
+function generateLayout(){
+    
+
+    
+
+    document.querySelectorAll(".player").forEach((player, index) => {
+       
+        player.innerHTML = players[index];
+    })
+
+    let choosenCates = [];
+    choosenCates = JSON.parse(localStorage.getItem("choosenCategories"));
+
+    document.querySelectorAll(".categoryColumn").forEach((cate, index) => {
+        let div;
+        div = '<div class="categoryItem"><span>'+ choosenCates[index] +'</span></div><input id="'+ choosenCates[index] +'" class="inputItem" type="text" placeholder="type text">'
+        cate.innerHTML += div;
+    })
+
+    document.querySelectorAll(".categoryColumn2").forEach((cate, index) => {
+        let div;
+        div = '<div class="categoryItem2"><span>'+ choosenCates[index] +'</span></div><input id="'+ choosenCates[index] +'2" class="inputItem2" type="text" placeholder="type text">'
+        cate.innerHTML += div;
+    })
+
+    let count = 1;
+    let zahl = 7;
+
+    document.querySelectorAll(".ratingAreas").forEach(rating => {
    
-    let div;
-    while(count < zahl){
-        div = '<div class="ratingColumn" id="ratingColumn' + count +'">'
+        let div;
+        while(count < zahl){
+            div = '<div class="ratingColumn" id="ratingColumn' + count +'">'
+            rating.innerHTML += div;
+            count += 1;
+        }
+        count = 7;
+        zahl = 13;
+    })
+    
+    document.querySelectorAll(".ratingColumn").forEach(rating => {
+        let div;
+        div = '<div class="rightButton"><span><i class="fas fa-check"></i></span></div><div class="equalButton"><span><i class="fas fa-equals"></i></span></div><div class="wrongButton"><span><i class="fas fa-times"></i></span></div>'
         rating.innerHTML += div;
-        count += 1;
-    }
-    count = 7;
-    zahl = 13;
-})
+    })
+}
 
-document.querySelectorAll(".ratingColumn").forEach(rating => {
-    let div;
-    div = '<div class="rightButton"><span><i class="fas fa-check"></i></span></div><div class="equalButton"><span><i class="fas fa-equals"></i></span></div><div class="wrongButton"><span><i class="fas fa-times"></i></span></div>'
-    rating.innerHTML += div;
-})
+
 
 
 document.querySelector("#buttonSubmit").addEventListener("click", clickedButton);
@@ -322,11 +356,11 @@ function showWinner(arrrayPlayerPoints){
     let winner;
 
     if(arrrayPlayerPoints[0] > arrrayPlayerPoints[1]){
-        winner = "Player 1 wins";
+        winner = players[0] + " wins";
     }
     
     if(arrrayPlayerPoints[0] < arrrayPlayerPoints[1]){
-        winner = "Player 2 wins";
+        winner = players[1] + " wins";
     }
     
     if(arrrayPlayerPoints[0] == arrrayPlayerPoints[1]){

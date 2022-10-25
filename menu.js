@@ -22,14 +22,20 @@ function clickMenuStart(){
             choosenPlayers.push(inputValue.value);
         }
     })
-    localStorage.setItem("choosenCategories", choosenCategories);
-    localStorage.setItem("choosenPlayers", choosenPlayers);
+    localStorage.setItem("choosenCategories", JSON.stringify(choosenCategories));
+    localStorage.setItem("choosenPlayers", JSON.stringify(choosenPlayers));
     window.location="/main.html";
 }
 
 function defaultSetting(){
   
-   defaultCategories.push("Animal", "Useless Power", "Breakup Reason", "Movie/Series", "Songtitle", "Dump Babyname");
+   defaultCategories.push("Animal");
+   defaultCategories.push("Useless Power");
+   defaultCategories.push("Breakup Reason");
+   defaultCategories.push("Movie/Series");
+   defaultCategories.push("Songtitel");
+   defaultCategories.push("Dumb Babyname");
+
     defaultPlayers.push("Player 1", "Player 2");
    localStorage.setItem("defaultCategories", defaultCategories);
    localStorage.setItem("defaultPlayers", defaultPlayers);

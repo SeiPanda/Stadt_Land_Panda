@@ -3,6 +3,11 @@
     src: url(TypoSlab_Irregular_Demo.otf);
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
+
 body{
     height: 100vh;
     width: 100vw;
@@ -12,7 +17,6 @@ body{
 
 #heading {
     font-family: typo;
-    color: white;
     justify-self: center;
 }
 
