@@ -176,13 +176,28 @@ body{
     display: none;
 }
 
+#PopUpWinner > .inner > .popUpInner{
+    display: grid;
+    grid-template-columns: 4fr auto 0.5fr;
+
+    color: white;
+    border-radius: 0.4rem;    
+    font-size: 1.5rem;
+   
+}
+
+#PopUpWinner > .inner{
+    width: fit-content !important;   
+    max-width: 50rem;
+}
+
 .inner{
     max-width: 25rem;
     height: fit-content;
     width: 90vw;
     position: absolute;
     display: grid;
-    grid-template-columns: 1fr;
+
     padding: 1.5rem;
     border-radius: 0.4rem;
     box-shadow: 4px 4px 10px #292929;
@@ -219,15 +234,23 @@ body{
     font-size: 2rem;
     font-family: typo;
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 #winnerText{
     text-align: center;
+   
 }
 
 .fas{
     font-size: 1.2rem;
     width: 1rem;
+}
+
+.fa-undo{
+    font-size: 1.4rem;
+    padding-right: 0.5rem;
 }
 
 .rightButton{

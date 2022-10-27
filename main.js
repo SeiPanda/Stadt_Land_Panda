@@ -3,28 +3,11 @@ let currentPlayer = 1;
 let i = time;
 let randomLetter;
 let players = []
-    players = JSON.parse(localStorage.getItem("choosenPlayers"));
+players = JSON.parse(localStorage.getItem("choosenPlayers"));
 
 generateLayout();
 
-let submitButton1 = document.querySelector("#submitButton1");
-let submitButton2 = document.querySelector("#submitButton2");
-
-let PopUpName2 = document.querySelector("#PopUpName2");
-let containerInner = document.querySelector("#container-inner");
-let containerInner2 = document.querySelector("#container-inner2");
-let ratingArea = document.querySelector("#ratingArea");
-let ratingArea2 = document.querySelector("#ratingArea2");
-let roundSection = document.querySelector("#roundSection");
-let letterSection = document.querySelector("#letterSection");
-
-
-
 function generateLayout(){
-    
-
-    
-
     document.querySelectorAll(".player").forEach((player, index) => {
        
         player.innerHTML = players[index];
@@ -67,27 +50,8 @@ function generateLayout(){
     })
 }
 
-
-
-
-document.querySelector("#buttonSubmit").addEventListener("click", clickedButton);
-document.querySelector("#buttonSubmit2").addEventListener("click", clickedButton2);
+let submitButton1 = document.querySelector("#submitButton1");
 submitButton1.addEventListener("click", clickStartButton);
-submitButton2.addEventListener("click", clickStartButton2);
-
-document.querySelector("#confirmButton").addEventListener("click", handleClickConfirmButton);
-
-document.querySelectorAll(".wrongButton").forEach(button => {
-    button.addEventListener("click", clickWrongButton);
-})
-
-document.querySelectorAll(".rightButton").forEach(button => {
-    button.addEventListener("click", clickRightButton);
-})
-
-document.querySelectorAll(".equalButton").forEach(button => {
-    button.addEventListener("click", clickEqualButton);
-})
 
 function clickStartButton(){
     submitButton1.removeEventListener("click", clickStartButton)
@@ -99,6 +63,10 @@ function clickStartButton(){
     }, 1000 );
 }
 
+let submitButton2 = document.querySelector("#submitButton2");
+submitButton2.addEventListener("click", clickStartButton2);
+let PopUpName2 = document.querySelector("#PopUpName2");
+
 function clickStartButton2(){
     submitButton2.innerHTML = randomLetter;
     setTimeout( () => {
@@ -107,12 +75,17 @@ function clickStartButton2(){
     }, 1000 );
 }
 
+let letterSection = document.querySelector("#letterSection");
+let containerInner = document.querySelector("#container-inner");
+
 function StartGame(){
     letterSection.innerHTML = randomLetter 
     sekunden();
     containerInner.style.display = "grid";
     window.setInterval("sekunden()", 1000); 
 }
+
+let containerInner2 = document.querySelector("#container-inner2");
 
 function StartGame2(){
     letterSection.innerHTML = randomLetter;
@@ -122,6 +95,11 @@ function StartGame2(){
     sekunden();
 }
 
+let ratingArea = document.querySelector("#ratingArea");
+let ratingArea2 = document.querySelector("#ratingArea2");
+let confirmButton = document.querySelector("#confirmButton");
+let roundSection = document.querySelector("#roundSection");
+
 function sekunden() {
     if(i == 100){
         roundSection.innerHTML = "Results";
@@ -129,7 +107,7 @@ function sekunden() {
         containerInner2.style.display = "grid";
         ratingArea.style.display = "grid";
         ratingArea2.style.display = "grid";
-        document.querySelector("#confirmButton").style.display ="flex";
+        confirmButton.style.display ="flex";
         document.querySelectorAll(".buttons").forEach(button => {
             button.style.display = "none";
         })
@@ -151,7 +129,7 @@ function sekunden() {
             containerInner.style.display = "none";
             containerInner2.style.display = "grid";
             PopUpName2.style.display = "flex";
-            document.querySelector("#confirmButton").style.display ="flex";
+            confirmButton.style.display ="flex";
             i = 200;
             currentPlayer = 2;
             return;
@@ -164,7 +142,7 @@ function sekunden() {
             containerInner2.style.display = "grid";
             ratingArea.style.display = "grid";
             ratingArea2.style.display = "grid";
-            document.querySelector("#confirmButton").style.display ="flex";
+            confirmButton.style.display ="flex";
             document.querySelectorAll(".buttons").forEach(button => {
                 button.style.display = "none";
             })
@@ -173,6 +151,8 @@ function sekunden() {
     }
     i--;
 }
+
+document.querySelector("#buttonSubmit").addEventListener("click", clickedButton);
 
 function clickedButton(){
     SaveData1();
@@ -186,6 +166,8 @@ function clickedButton(){
     currentPlayer = 2;
     sekunden();
 }
+
+document.querySelector("#buttonSubmit2").addEventListener("click", clickedButton2);
 
 function clickedButton2(){
     SaveData2();
@@ -221,6 +203,20 @@ function SaveData2(){
     })
 }
  
+confirmButton.addEventListener("click", handleClickConfirmButton);
+
+document.querySelectorAll(".wrongButton").forEach(button => {
+    button.addEventListener("click", clickWrongButton);
+})
+
+document.querySelectorAll(".rightButton").forEach(button => {
+    button.addEventListener("click", clickRightButton);
+})
+
+document.querySelectorAll(".equalButton").forEach(button => {
+    button.addEventListener("click", clickEqualButton);
+})
+
 function clickRightButton(event){
 
     let currentClickedButton = event.target.parentNode.parentNode.parentNode.id;
@@ -309,7 +305,6 @@ function fillPlayerRatingArrays(){
             }
         }
     })
-    console.log(playerRatings)
     return playerRatings;
 }
 
@@ -369,4 +364,11 @@ function showWinner(arrrayPlayerPoints){
     
     document.querySelector("#winnerText").innerHTML = winner;
     document.querySelector("#PopUpWinner").style.display = "flex";
+}
+
+document.querySelector("#backToButton").addEventListener("click", backToMenu)
+
+function backToMenu()
+{
+    window.location="/menu.html";
 }
