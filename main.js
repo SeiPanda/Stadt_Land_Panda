@@ -152,16 +152,17 @@ function sekunden() {
     i--;
 }
 
+let restTime = [];
 document.querySelector("#buttonSubmit").addEventListener("click", clickedButton);
 
 function clickedButton(){
+    restTime[0] = roundSection.innerHTML;
     SaveData1();
     roundSection.innerHTML = "Time";
     letterSection.innerHTML = "Letter";
     containerInner.style.display = "none";
     containerInner2.style.display = "grid";
     PopUpName2.style.display = "flex";
-    
     i = 200;
     currentPlayer = 2;
     sekunden();
@@ -170,10 +171,10 @@ function clickedButton(){
 document.querySelector("#buttonSubmit2").addEventListener("click", clickedButton2);
 
 function clickedButton2(){
+    restTime[1] = roundSection.innerHTML;
     SaveData2();
     containerInner2.style.display = "none";
     i = 100;
-
     sekunden();
 }
 
@@ -189,7 +190,7 @@ function SaveData1(){
     let player1 = [];
 
     document.querySelectorAll(".inputItem").forEach(category => {  
-        console.log(category.value);
+       
         player1.push(category.value);
     })
 }
@@ -198,7 +199,7 @@ function SaveData2(){
     let player2 = [];
 
     document.querySelectorAll(".inputItem2").forEach(category => {
-        console.log(category.value);
+   
         player2.push(category.value);
     })
 }
@@ -342,6 +343,10 @@ function calcPlayersPoints(playerRatings_){
                 break;    
         } 
     }
+  
+    playerPoints1 += parseInt(restTime[0]);
+    playerPoints2 += parseInt(restTime[1]);
+    
     playerPoints.push(playerPoints1);
     playerPoints.push(playerPoints2);
     return playerPoints;
@@ -371,4 +376,11 @@ document.querySelector("#backToButton").addEventListener("click", backToMenu)
 function backToMenu()
 {
     window.location="/menu.html";
+}
+
+document.querySelector("#restartButton").addEventListener("click", restartGame)
+
+function restartGame()
+{
+    window.location="/main.html";
 }
