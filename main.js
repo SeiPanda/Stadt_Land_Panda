@@ -326,6 +326,10 @@ function calcPlayersPoints(playerRatings_){
                     playerPoints1 += 20;
                     playerPoints2 += 0;
                 }
+                if(playerRatings_[1][i] === "equalButton"){
+                    playerPoints1 += 5;
+                    playerPoints2 += 5;
+                }
                 break;
             case "wrongButton":
                 if(playerRatings_[1][i] === "rightButton"){
@@ -335,6 +339,10 @@ function calcPlayersPoints(playerRatings_){
                 if(playerRatings_[1][i] === "wrongButton"){
                     playerPoints1 += 0;
                     playerPoints2 += 0;
+                }
+                if(playerRatings_[1][i] === "equalButton"){
+                    playerPoints1 += 5;
+                    playerPoints2 += 5;
                 }
                 break;
             case "equalButton":
