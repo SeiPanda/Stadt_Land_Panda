@@ -107,6 +107,7 @@ function sekunden() {
         containerInner2.style.display = "grid";
         ratingArea.style.display = "grid";
         ratingArea2.style.display = "grid";
+      
         confirmButton.style.display ="flex";
         document.querySelectorAll(".buttons").forEach(button => {
             button.style.display = "none";
@@ -131,6 +132,7 @@ function sekunden() {
             PopUpName2.style.display = "flex";
             confirmButton.style.display ="flex";
             i = 200;
+            restTime[0] = 0;
             currentPlayer = 2;
             return;
         }
@@ -142,6 +144,7 @@ function sekunden() {
             containerInner2.style.display = "grid";
             ratingArea.style.display = "grid";
             ratingArea2.style.display = "grid";
+            restTime[1] = 0;
             confirmButton.style.display ="flex";
             document.querySelectorAll(".buttons").forEach(button => {
                 button.style.display = "none";
@@ -351,7 +354,8 @@ function calcPlayersPoints(playerRatings_){
                 break;    
         } 
     }
-  
+
+
     playerPoints1 += parseInt(restTime[0]);
     playerPoints2 += parseInt(restTime[1]);
     
@@ -362,7 +366,7 @@ function calcPlayersPoints(playerRatings_){
 
 function showWinner(arrrayPlayerPoints){
     let winner;
-
+   
     if(arrrayPlayerPoints[0] > arrrayPlayerPoints[1]){
         winner = players[0] + " wins";
     }
@@ -375,6 +379,8 @@ function showWinner(arrrayPlayerPoints){
         winner = "Everyone is a winner"
     }
     
+    console.log(arrrayPlayerPoints)
+
     document.querySelector("#winnerText").innerHTML = winner;
     document.querySelector("#PopUpWinner").style.display = "flex";
 }
